@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for license-based subscription system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "dotenv": "^10.0.0",
+    "razorpay": "^1.8.0",
+    "paypal-rest-sdk": "^1.8.1"
+  }
+}
