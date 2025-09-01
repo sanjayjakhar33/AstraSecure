@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const AuthContext = createContext();
 
@@ -11,41 +11,29 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({
+    full_name: 'Demo User',
+    email: 'demo@astrasecure.com',
+    role: 'security_admin'
+  }); // Set demo user for showcasing
+  const [token, setToken] = useState('demo-token');
+  const [loading, setLoading] = useState(false);
+
+  const logout = useCallback(() => {
+    localStorage.removeItem('token');
+    setToken(null);
+    setUser(null);
+  }, []);
+
+  const fetchUser = useCallback(async () => {
+    // Demo mode - skip API call
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
-    if (token) {
-      // Verify token and get user info
-      fetchUser();
-    } else {
-      setLoading(false);
-    }
-  }, [token]);
-
-  const fetchUser = async () => {
-    try {
-      const response = await fetch('/api/v1/auth/me', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
-      } else {
-        // Token is invalid
-        logout();
-      }
-    } catch (error) {
-      console.error('Error fetching user:', error);
-      logout();
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Demo mode - skip token validation
+    setLoading(false);
+  }, []);
 
   const login = async (email, password) => {
     try {
@@ -100,12 +88,6 @@ export const AuthProvider = ({ children }) => {
       console.error('Registration error:', error);
       return { success: false, error: 'Network error' };
     }
-  };
-
-  const logout = () => {
-    localStorage.removeItem('token');
-    setToken(null);
-    setUser(null);
   };
 
   const value = {
