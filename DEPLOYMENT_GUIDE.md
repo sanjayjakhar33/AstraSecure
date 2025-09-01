@@ -1,5 +1,18 @@
 # 🚀 AstraSecure Deployment Guide
 
+## 🎯 Quick Deploy to Vercel (Single-Step)
+
+**Want to deploy AstraSecure to Vercel in one step?**
+
+```bash
+# Run our automated deployment script
+./deploy-to-vercel.sh
+```
+
+📖 **For complete Vercel deployment guide: [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)**
+
+---
+
 ## 📋 Quick Production Deployment
 
 ### Method 1: Static Site Deployment (Recommended for Frontend)
@@ -20,7 +33,22 @@ netlify login
 netlify deploy --dir=build --prod
 ```
 
-#### Vercel Deployment
+#### Vercel Deployment (Single-Step)
+```bash
+# 🚀 RECOMMENDED: Use our automated single-step deployment
+./deploy-to-vercel.sh
+
+# This script automatically handles:
+# - Database setup (Neon/Supabase/Railway)
+# - Backend deployment (Railway/Render/Fly.io)
+# - Frontend build and Vercel deployment
+# - Environment variable configuration
+# - Security headers and optimization
+```
+
+**📖 For detailed instructions, see: [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)**
+
+#### Manual Vercel Deployment
 ```bash
 # 1. Install Vercel CLI
 npm install -g vercel
@@ -28,7 +56,10 @@ npm install -g vercel
 # 2. Login to Vercel
 vercel login
 
-# 3. Deploy
+# 3. Build frontend
+cd frontend_react && npm install && npm run build && cd ..
+
+# 4. Deploy
 vercel --prod
 ```
 

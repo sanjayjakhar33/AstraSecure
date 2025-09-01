@@ -25,10 +25,10 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   }, []);
 
-  const fetchUser = useCallback(async () => {
-    // Demo mode - skip API call
-    setLoading(false);
-  }, []);
+  // const fetchUser = useCallback(async () => {
+  //   // Demo mode - skip API call
+  //   setLoading(false);
+  // }, []);
 
   useEffect(() => {
     // Demo mode - skip token validation

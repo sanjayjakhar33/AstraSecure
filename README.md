@@ -54,6 +54,20 @@ AstraSecure/
 
 ## 🚀 Quick Start
 
+### ⚡ Deploy to Vercel in 10 Minutes (Recommended)
+
+**Want to get AstraSecure running in production quickly?**
+
+```bash
+git clone https://github.com/sanjayjakhar33/AstraSecure.git
+cd AstraSecure
+./deploy-to-vercel.sh
+```
+
+📖 **[Complete Vercel Deployment Guide →](./VERCEL_DEPLOYMENT.md)**
+
+### 🔧 Local Development Setup
+
 ### Prerequisites
 - Docker and Docker Compose
 - Git
