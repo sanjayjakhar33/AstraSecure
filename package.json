@@ -1,0 +1,37 @@
+{
+  "name": "astrasecure",
+  "version": "2.1.0",
+  "description": "AstraSecure Cybersecurity Auditing Platform",
+  "main": "frontend_react/src/index.js",
+  "scripts": {
+    "build": "cd frontend_react && npm install && npm run build",
+    "start": "cd frontend_react && npm start",
+    "test": "cd frontend_react && npm test",
+    "deploy": "./deploy-to-vercel.sh",
+    "setup-db": "./setup-cloud-database.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanjayjakhar33/AstraSecure.git"
+  },
+  "keywords": [
+    "cybersecurity",
+    "security-scanning",
+    "vulnerability-assessment",
+    "compliance",
+    "penetration-testing",
+    "react",
+    "fastapi",
+    "postgresql"
+  ],
+  "author": "AstraSecure Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanjayjakhar33/AstraSecure/issues"
+  },
+  "homepage": "https://github.com/sanjayjakhar33/AstraSecure#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

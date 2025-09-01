@@ -1,0 +1,76 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+build
+dist
+out
+.next
+
+# Development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Backend directories (not needed for frontend deployment)
+backend_python
+backend
+ai
+infrastructure
+
+# Documentation (optional, include if you want docs deployed)
+# docs
+
+# Version control
+.git
+.gitignore
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs
+
+# Testing
+coverage
+.nyc_output
+
+# Python files (not needed for frontend)
+*.pyc
+__pycache__
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis
+.pytest_cache
+
+# Database files
+*.db
+*.sqlite3
+
+# Temporary files
+tmp
+temp
+.tmp
