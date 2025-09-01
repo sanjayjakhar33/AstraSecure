@@ -1,21 +1,72 @@
-version: '3'
+version: '3.8'
 
 services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: astrasecure
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis for Celery
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  # Python FastAPI Backend
   backend:
+    build: ../backend_python
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/astrasecure
+      REDIS_URL: redis://redis:6379/0
+    env_file:
+      - ../backend_python/.env.example
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - ../backend_python:/app
+      - scan_results:/app/uploads
+
+  # React Frontend
+  frontend:
+    build: ../frontend_react
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../frontend_react/.env.example
+    depends_on:
+      - backend
+
+  # Legacy Node.js Backend (for reference)
+  backend_legacy:
     build: ../backend
     ports:
       - "4000:4000"
     env_file:
       - ../backend/.env.example
-  frontend:
-    build: ../frontend
-    ports:
-      - "3000:3000"
-    env_file:
-      - ../frontend/.env.example
-  ai:
-    build: ../ai
-    ports:
-      - "5000:5000"
-    env_file:
-      - ../ai/.env.example
+    profiles:
+      - legacy
+
+volumes:
+  postgres_data:
+  redis_data:
+  scan_results:
