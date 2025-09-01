@@ -1,44 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for AstraSecure */
+/* Custom luxury styles for AstraSecure */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-.btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200;
+/* Luxury Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md transition duration-200;
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.card {
-  @apply bg-white shadow-lg rounded-lg p-6;
+/* Premium Button Styles */
+.btn-luxury {
+  @apply relative overflow-hidden bg-gradient-to-r from-luxury-500 to-luxury-700 text-white font-semibold py-3 px-6 rounded-xl shadow-luxury hover:shadow-luxury-lg transform hover:scale-105 transition-all duration-300;
 }
 
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-luxury:hover::before {
+  left: 100%;
+}
+
+.btn-royal {
+  @apply relative overflow-hidden bg-gradient-to-r from-royal-500 to-royal-700 text-white font-semibold py-3 px-6 rounded-xl shadow-luxury hover:shadow-glow-blue transform hover:scale-105 transition-all duration-300;
+}
+
+.btn-gold {
+  @apply relative overflow-hidden bg-gradient-to-r from-gold-400 to-gold-600 text-white font-semibold py-3 px-6 rounded-xl shadow-luxury hover:shadow-glow-gold transform hover:scale-105 transition-all duration-300;
+}
+
+.btn-emerald {
+  @apply relative overflow-hidden bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-semibold py-3 px-6 rounded-xl shadow-luxury hover:shadow-luxury-lg transform hover:scale-105 transition-all duration-300;
+}
+
+/* Premium Card Styles */
+.card-luxury {
+  @apply bg-white/90 backdrop-blur-xl rounded-2xl shadow-luxury hover:shadow-luxury-lg border border-white/20 transition-all duration-300 transform hover:scale-105;
+}
+
+.card-glass {
+  @apply bg-white/10 backdrop-blur-xl rounded-2xl shadow-luxury border border-white/20 text-white;
+}
+
+.card-gradient {
+  @apply bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-2xl shadow-luxury border border-white/20 text-white;
+}
+
+/* Luxury Input Styles */
+.input-luxury {
+  @apply w-full px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-luxury-500 focus:border-transparent transition-all duration-300;
+}
+
+/* Severity Badge Styles */
 .severity-critical {
-  @apply bg-red-100 text-red-800 border-red-200;
+  @apply bg-gradient-to-r from-red-500 to-red-700 text-white border-0 shadow-lg animate-pulse-glow;
 }
 
 .severity-high {
-  @apply bg-orange-100 text-orange-800 border-orange-200;
+  @apply bg-gradient-to-r from-orange-500 to-orange-700 text-white border-0 shadow-lg;
 }
 
 .severity-medium {
-  @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+  @apply bg-gradient-to-r from-yellow-500 to-yellow-700 text-white border-0 shadow-lg;
 }
 
 .severity-low {
-  @apply bg-blue-100 text-blue-800 border-blue-200;
+  @apply bg-gradient-to-r from-blue-500 to-blue-700 text-white border-0 shadow-lg;
 }
 
 .severity-info {
-  @apply bg-gray-100 text-gray-800 border-gray-200;
+  @apply bg-gradient-to-r from-gray-500 to-gray-700 text-white border-0 shadow-lg;
+}
+
+/* Navigation Styles */
+.nav-item-active {
+  @apply bg-gradient-to-r from-luxury-500/20 to-luxury-700/20 text-luxury-600 border-r-4 border-luxury-600 shadow-inner-luxury;
+}
+
+.nav-item {
+  @apply text-slate-600 hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 hover:text-slate-900 rounded-lg transition-all duration-300;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #d946ef, #a21caf);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #c026d3, #86198f);
+}
+
+/* Status Indicator */
+.status-indicator {
+  @apply relative inline-flex h-3 w-3;
+}
+
+.status-indicator::after {
+  content: '';
+  @apply absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping;
+}
+
+.status-indicator::before {
+  content: '';
+  @apply relative inline-flex h-3 w-3 rounded-full bg-emerald-500;
+}
+
+/* Floating Animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Loading Spinner */
+.luxury-spinner {
+  @apply inline-block w-8 h-8 border-4 border-luxury-200 border-t-luxury-600 rounded-full animate-spin;
+}
+
+/* Premium Typography */
+.text-gradient {
+  @apply bg-gradient-to-r from-luxury-600 to-royal-600 bg-clip-text text-transparent;
+}
+
+.text-gold-gradient {
+  @apply bg-gradient-to-r from-gold-500 to-gold-700 bg-clip-text text-transparent;
+}
+
+/* Luxury Tooltip */
+.tooltip {
+  @apply absolute z-50 px-3 py-2 text-sm text-white bg-slate-900/90 backdrop-blur-sm rounded-lg shadow-luxury opacity-0 transition-opacity duration-300 pointer-events-none;
+}
+
+.tooltip.show {
+  @apply opacity-100;
+}
+
+/* Premium Backdrop */
+.luxury-backdrop {
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.1) 0%, 
+    rgba(118, 75, 162, 0.1) 25%,
+    rgba(59, 130, 246, 0.1) 50%,
+    rgba(217, 70, 239, 0.1) 75%,
+    rgba(16, 185, 129, 0.1) 100%
+  );
+}
+
+/* Luxury Border Gradient */
+.border-gradient {
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #d946ef, #3b82f6, #10b981) border-box;
+  border: 2px solid transparent;
+}
+
+/* Chart Container */
+.chart-container {
+  @apply relative p-6 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20;
+}
+
+/* Notification Styles */
+.notification {
+  @apply fixed top-4 right-4 z-50 p-4 bg-white/90 backdrop-blur-xl rounded-xl shadow-luxury border border-white/20 transform transition-all duration-500;
+}
+
+.notification.success {
+  @apply border-emerald-200 bg-emerald-50/90;
+}
+
+.notification.error {
+  @apply border-red-200 bg-red-50/90;
+}
+
+.notification.warning {
+  @apply border-yellow-200 bg-yellow-50/90;
 }
