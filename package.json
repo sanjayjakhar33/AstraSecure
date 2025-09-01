@@ -8,7 +8,9 @@
     "start": "cd frontend_react && npm start",
     "test": "cd frontend_react && npm test",
     "deploy": "./deploy-to-vercel.sh",
-    "setup-db": "./setup-cloud-database.sh"
+    "setup-db": "./setup-cloud-database.sh",
+    "validate": "./validate-environment.sh",
+    "quick-deploy": "npm run validate && npm run deploy"
   },
   "repository": {
     "type": "git",
