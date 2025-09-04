@@ -214,6 +214,18 @@ alembic upgrade head
 - Secure credential handling
 - Scan result validation
 
+## 📚 Complete Documentation
+
+### 🎯 Understanding AstraSecure
+- **[Complete Project Flow & Audit Process](./docs/COMPLETE_PROJECT_FLOW.md)** - Comprehensive guide to understanding how AstraSecure works and performs complete company audits
+- **[Production Audit Implementation Guide](./docs/PRODUCTION_AUDIT_GUIDE.md)** - Step-by-step guide for conducting production security audits
+- **[System Architecture](./docs/ARCHITECTURE_DIAGRAM.md)** - Detailed technical architecture and component relationships
+
+### 🚀 Quick Start Guides
+- **[Vercel Deployment Guide](./VERCEL_DEPLOYMENT.md)** - Deploy to production in 10 minutes
+- **[Setup Guide](./SETUP.md)** - Local development environment setup
+- **[Git Testing Guide](./GIT_TESTING_GUIDE.md)** - Complete testing workflow
+
 ## 🔧 Configuration
 
 ### Environment Variables
